@@ -2,20 +2,20 @@ import React, { useState, useEffect } from 'react';
 import './Task.css';
 
 const Employee = () => {
-  const [result, setResult] = useState([]);
-  const [search, setSearch] = useState('');
+  const [one, setOne] = useState([]);
+  const [two, setTwo] = useState('');
   const [main, setmain] = useState('');
   
   useEffect(() => {
     fetch('https://5ea5ca472d86f00016b4626d.mockapi.io/brotherhood')
       .then((res) => res.json())
       .then((data) => {
-        setResult(data);
+        setOne(data);
       });
   }, []);
 
   const search1 = (e) => {
-    setSearch(e.target.value.toLowerCase());
+    setTwo(e.target.value.toLowerCase());
   };
 
   const handle = (e) => {
@@ -30,9 +30,9 @@ const Employee = () => {
         <option value='security'>Recruitment</option>
         <option value='recruitment'>Security</option>
       </select>
-      {result
+      {one
         .filter((a) =>
-          a.name.toLowerCase().includes(search) &&
+          a.name.toLowerCase().includes(two) &&
           (main === '' || a.main === main)
         )
         .map((e, c) => (
